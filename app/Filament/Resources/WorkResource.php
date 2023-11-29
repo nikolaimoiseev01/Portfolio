@@ -54,7 +54,7 @@ class WorkResource extends Resource
                                 ->label('Ссылка на сайт')
                                 ->maxLength(255),
                         ]),
-                    Grid::make(2)
+                    Grid::make()
                         ->schema([
                             SpatieMediaLibraryFileUpload::make('work_cover_card')
                                 ->collection('work_cover_card')
