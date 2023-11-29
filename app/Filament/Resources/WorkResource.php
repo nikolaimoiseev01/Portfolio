@@ -67,13 +67,7 @@ class WorkResource extends Resource
                                 ->required()
                                 ->multiple()
                                 ->label('Главное изображение (png|jpg)')
-                                ->image(),
-                            SpatieMediaLibraryFileUpload::make('work_examples')
-                                ->collection('work_examples')
-                                ->required()
-                                ->multiple()
-                                ->label('Примеры (png|jpg)')
-                                ->image(),
+                                ->image()
                         ]),
                     Grid::make()
                         ->schema([
