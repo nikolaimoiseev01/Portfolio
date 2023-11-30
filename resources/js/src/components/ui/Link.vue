@@ -23,7 +23,6 @@ export default {
     methods: {
         // Метод для плавной прокрутки до верха страницы
         scrollToTop() {
-            console.log('test')
             // Ваш код для плавной прокрутки, например, с использованием requestAnimationFrame
             const scrollToTop = () => {
                 const c = document.documentElement.scrollTop || document.body.scrollTop;

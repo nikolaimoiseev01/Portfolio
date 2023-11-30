@@ -1,21 +1,23 @@
 <template>
-    <div ref="card"
-         class="card-wrap">
-        <div class="background-image"></div>
-        <div :class="{ 'hidden': !isVisible}" class="work-reveal-mask"></div>
-        <div class="work-mask"></div>
-        <div class="work-mask-number">
-            <div class="work-mask-back">{{ work.order }}</div>
-            <div class="work-mask-front">
-                <div :data-index=" work.order " class="work-mask-overlay">{{ work.order }}</div>
+    <a :href="'/work/' + work.id">
+        <div ref="card"
+             class="card-wrap">
+            <div class="background-image"></div>
+            <div :class="{ 'hidden': !isVisible}" class="work-reveal-mask"></div>
+            <div class="work-mask"></div>
+            <div class="work-mask-number">
+                <div class="work-mask-back">{{ work.order }}</div>
+                <div class="work-mask-front">
+                    <div :data-index=" work.order " class="work-mask-overlay">{{ work.order }}</div>
+                </div>
+            </div>
+            <div class="work-text-section">
+                <h1 itemprop="name" class="work-title">{{ work.title }}</h1>
+                <p itemprop="description" v-html="work.desc_card" class="work-subtitle"></p>
+                <Link :to="'/work/' + work.id">Подробнее</Link>
             </div>
         </div>
-        <div class="work-text-section">
-            <h1 itemprop="name" class="work-title">{{ work.title }}</h1>
-            <p itemprop="description" v-html="work.desc_card" class="work-subtitle"></p>
-            <Link :to="'/work/' + work.id">Подробнее</Link>
-        </div>
-    </div>
+    </a>
 </template>
 
 <script lang="ts">

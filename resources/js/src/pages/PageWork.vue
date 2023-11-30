@@ -181,21 +181,26 @@ export default {
                 .then(async response => {
                     this.all_works = response.data;
                     this.work = this.all_works[this.$route.params.id - 1];
-                    this.cover_card = "url(" + this.work.cover_full + ")";
+                    if(this.work) {
+                        this.cover_card = "url(" + this.work.cover_full + ")";
 
-                    if (this.$route.params.id < this.all_works.length) {
-                        this.next_work = this.all_works[this.$route.params.id];
-                    } else {
-                        this.next_work = this.all_works[this.$route.params.id - 2];
+                        if (this.$route.params.id < this.all_works.length) {
+                            this.next_work = this.all_works[this.$route.params.id];
+                        } else {
+                            this.next_work = this.all_works[this.$route.params.id - 2];
+                        }
+
+                        const dimensions_1 = await this.get_image_size(this.work.cover_desc_detailed_1_small);
+                        const dimensions_2 = await this.get_image_size(this.work.cover_desc_detailed_2_small);
+
+                        this.height_detailed_1 = dimensions_1.height
+                        this.width_detailed_1 = dimensions_1.width
+                        this.height_detailed_2 = dimensions_2.height
+                        this.width_detailed_2 = dimensions_2.width
+
                     }
 
-                    const dimensions_1 = await this.get_image_size(this.work.cover_desc_detailed_1_small);
-                    const dimensions_2 = await this.get_image_size(this.work.cover_desc_detailed_2_small);
 
-                    this.height_detailed_1 = dimensions_1.height
-                    this.width_detailed_1 = dimensions_1.width
-                    this.height_detailed_2 = dimensions_2.height
-                    this.width_detailed_2 = dimensions_2.width
 
                     this.show_image = true
 
@@ -314,7 +319,7 @@ ul li {
     p {
         color: white;
         width: 90%;
-        max-width: 800px;
+        max-width: 1000px;
     }
 }
 

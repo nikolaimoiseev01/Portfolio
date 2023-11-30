@@ -23,6 +23,21 @@ export default {
     },
     mounted() {
         window.addEventListener('scroll', this.parallaxEffect);
+        if (this.$route.fullPath.includes('#BlockWorks')) {
+            const myEl = document.getElementById('BlockWorks')
+
+            if (myEl) {
+                setTimeout(()=> {
+                    this.$smoothScroll({
+                        scrollTo: myEl, // scrollTo is also allowed to be number
+                        duration: 1000,       // animation duration in ms
+                        offset: -300,           // offset in px from scroll element, can be positive or negative
+                        easingFunction: 'easeInOutCubic'
+                    })
+                }, 1500)
+
+            }
+        }
     },
     beforeUnmount() {
         window.removeEventListener('scroll', this.parallaxEffect);

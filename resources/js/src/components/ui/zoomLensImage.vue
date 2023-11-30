@@ -70,93 +70,17 @@ export default {
         }
     },
     watch: {
-        '$route.params.id': 'setShowLens'
+        '$route.params.id': ['setShowLens', 'updateFunction']
     },
     methods: {
         insertExternalSource: function () {
             var mainSizeHeight = this.size.height;
             var mainSizeWidth = this.size.width;
             const lens = this.$refs.lens;
+            const input_image_size = this.image
             const input_image = {
-                full: this.image.full,
-                small: this.image.small
-            }
-
-            function zoomLens(imageElement, resultElement) {
-
-
-                var image,
-                    result,
-                    coordinates_x,
-                    coordinates_y;
-
-                image = document.querySelector(imageElement);
-                result = document.querySelector(resultElement);
-
-                lens.style.border = "0.5px solid #000";
-                lens.style.position = "absolute";
-                lens.style.width = mainSizeWidth;
-                lens.style.height = mainSizeHeight;
-
-                image.parentElement.insertBefore(lens, image);
-
-                coordinates_x = (result.offsetWidth / lens.offsetWidth) * 0.25;
-                coordinates_y = (result.offsetHeight / lens.offsetHeight) * 0.25;
-
-                result.style.backgroundImage = "url('" + input_image.small + "')";
-                result.style.backgroundSize = (image.width * coordinates_x) + "px " + (image.height * coordinates_y) + "px";
-
-                lens.addEventListener("mousemove", movingLens);
-                image.addEventListener("mousemove", movingLens);
-
-                lens.addEventListener("touchmove", movingLens);
-                image.addEventListener("touchmove", movingLens);
-
-
-                function movingLens(e) {
-
-                    var pos,
-                        x,
-                        y;
-
-                    e.preventDefault();
-
-                    pos = getCursorPosition(e, image);
-
-                    x = pos.x - (lens.offsetWidth / 2);
-                    y = pos.y - (lens.offsetHeight / 2);
-
-                    if (x > image.width - lens.offsetWidth) {
-
-                        x = image.width - lens.offsetWidth;
-
-                    }
-
-                    if (x < 0) {
-
-                        x = 0;
-
-                    }
-
-                    if (y > image.height - lens.offsetHeight) {
-
-                        y = image.height - lens.offsetHeight;
-
-                    }
-
-                    if (y < 0) {
-
-                        y = 0;
-
-                    }
-
-                    lens.style.left = x + "px";
-                    lens.style.top = y + "px";
-
-                    result.style.backgroundPosition = "-" + (x * coordinates_x) + "px -" + (y * coordinates_y) + "px";
-
-                }
-
+                'width': this.width,
+                'height': this.height
             }
 
             function zoomMagnifyingGlasses(imageElement, zoomLevel) {
@@ -176,10 +100,11 @@ export default {
 
                 image.parentElement.insertBefore(lens, image);
 
+
                 lens.style.backgroundImage = "";
 
                 lens.style.backgroundRepeat = "no-repeat";
-                lens.style.backgroundSize = (image.width * zoomLevel) + "px " + (image.height * zoomLevel) + "px";
+                lens.style.backgroundSize = (input_image.width * zoomLevel) + "px " + (input_image.height * zoomLevel) + "px";
 
                 width = lens.offsetWidth / 2;
                 height = lens.offsetHeight / 2;
@@ -263,13 +188,17 @@ export default {
             zoomMagnifyingGlasses("#" + this.id, zlvl);
 
         },
-        setShowLens: function() {
+        setShowLens: function () {
             this.showLens = false
+        },
+        updateFunction: function () {
+            setTimeout(() => {
+                this.insertExternalSource()
+            }, 1500)
         }
     },
     mounted() {
         this.insertExternalSource();
-
 
         document.addEventListener("keydown", (e) => {
             if (e.keyCode === 27) {

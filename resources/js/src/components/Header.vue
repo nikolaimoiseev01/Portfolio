@@ -6,8 +6,9 @@
             </router-link>
             <div class="menu-wrap">
                 <router-link class="link" to="/">Главная</router-link>
-                <router-link class="link" to="#BlockWorks">Работы</router-link>
+                <router-link @click="goToWorks" class="link" to="/#BlockWorks">Работы</router-link>
                 <a class="link" @click="openContactForm">Контакты</a>
+                <a class="link" @click="openContactForm">Обо мне</a>
             </div>
         </div>
 
@@ -25,6 +26,20 @@ export default {
     methods: {
         openContactForm() {
             store.commit('setContactFormVisible', true)
+        },
+        goToWorks() {
+
+            const myEl = document.getElementById('BlockWorks')
+
+            if(myEl) {
+                this.$smoothScroll({
+                    scrollTo: myEl, // scrollTo is also allowed to be number
+                    duration: 1000,       // animation duration in ms
+                    offset: -300,           // offset in px from scroll element, can be positive or negative
+                    easingFunction: 'easeInOutCubic'
+                })
+            }
+
         }
     }
 }

@@ -22,24 +22,6 @@ export default {
                 offset: -300,           // offset in px from scroll element, can be positive or negative
                 easingFunction: 'easeInOutCubic'
             })
-
-
-            //
-            // const id = 'BlockWorks';
-            // const yOffset = -300;
-            // const element = document.getElementById(id);
-            // const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-            //
-            // if (element) {
-            //     window.scrollTo({
-            //         top: y,
-            //         behavior: 'smooth',
-            //         block: 'start',
-            //         inline: 'nearest',
-            //         // Используем кубическую функцию времени для медленной прокрутки в начале и быстрой в конце
-            //         timingFunction: 'cubic-bezier(4, 100, 100.2, 101)'
-            //     });
-            // }
         }
     }
 }

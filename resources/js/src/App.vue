@@ -8,7 +8,7 @@
         </router-view>
     </main>
     <Footer></Footer>
-    <PageTransition  class="full-page"/>
+    <PageTransition class="full-page"/>
 </template>
 
 <script>
