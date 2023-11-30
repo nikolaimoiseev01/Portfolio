@@ -37,6 +37,7 @@ export default {
             const myEl = document.getElementById('BlockWorks')
 
             if(myEl) {
+                window.history.replaceState(window.history.state, "", "/#BlockWorks");
                 this.$smoothScroll({
                     scrollTo: myEl, // scrollTo is also allowed to be number
                     duration: 1000,       // animation duration in ms
