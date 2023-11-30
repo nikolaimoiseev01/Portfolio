@@ -5,7 +5,7 @@
                 <LogoWhite></LogoWhite>
             </router-link>
             <div class="menu-wrap">
-                <router-link class="link" to="/">Главная</router-link>
+                <router-link v-if="show_main" class="link" to="/">Главная</router-link>
                 <router-link @click="goToWorks" class="link" to="/#BlockWorks">Работы</router-link>
                 <a class="link" @click="openContactForm">Контакты</a>
                 <a class="link" @click="openContactForm">Обо мне</a>
@@ -23,6 +23,11 @@ import store from "@/src/store/store.js";
 export default {
     name: "Header.vue",
     components: {LogoWhite},
+    data() {
+        return {
+            show_main: Boolean
+        }
+    },
     methods: {
         openContactForm() {
             store.commit('setContactFormVisible', true)
@@ -39,7 +44,13 @@ export default {
                     easingFunction: 'easeInOutCubic'
                 })
             }
-
+        }
+    },
+    mounted() {
+        if(this.$route.fullPath === '/' || this.$route.fullPath === '/#BlockWorks') {
+            this.show_main = false
+        } else {
+            this.show_main = true
         }
     }
 }

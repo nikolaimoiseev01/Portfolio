@@ -29,7 +29,7 @@ export default {
     watch: {
         '$route'(to, from) {
 
-            if (!to.fullPath.includes('#BlockWorks')) {
+            if (!to.fullPath.includes('#BlockWorks') && to.fullPath !== '/') {
                 this.scrollToTop();
                 store.commit('setPageTransitionVisible', true);
             }

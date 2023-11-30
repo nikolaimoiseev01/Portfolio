@@ -193,7 +193,9 @@ export default {
         },
         updateFunction: function () {
             setTimeout(() => {
-                this.insertExternalSource()
+                if(document.querySelector("#" + this.id)) {
+                    this.insertExternalSource()
+                }
             }, 1500)
         }
     },
