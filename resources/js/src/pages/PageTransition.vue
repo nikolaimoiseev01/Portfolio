@@ -42,7 +42,7 @@ export default {
 @import "/resources/scss/app";
 
 .page-transition-wrap {
-
+    left: 0;
     top: 0;
     visibility: visible;
     transition: .3s all ease-in-out;

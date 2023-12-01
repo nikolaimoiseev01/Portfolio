@@ -10,7 +10,7 @@
                 <a class="link" @click="openContactForm">Контакты</a>
                 <a class="link" @click="openContactForm">Обо мне</a>
 
-                <div @click="show_mobile = true" class="nav-toggle">
+                <div @click="setMobileMenu(true)" class="nav-toggle">
                     <span class="menu-trigger">
                         <i class="menu-trigger-bar top"></i><i class="menu-trigger-bar middle"></i>
                         <i class="menu-trigger-bar bottom"></i>
@@ -20,8 +20,8 @@
         </div>
     </header>
 
-    <nav :class="{'opened' : show_mobile}" class="mobile-menu">
-        <span @click="show_mobile = false" class="close-trigger">
+    <nav :class="computedClasses" class="mobile-menu">
+        <span @click="setMobileMenu(false)" class="close-trigger">
             <i class="close-trigger-bar left"></i>
             <i class="close-trigger-bar right"></i>
         </span>
@@ -55,6 +55,7 @@ export default {
     },
     methods: {
         openContactForm() {
+            store.commit('setMobileMenuVisible', false)
             store.commit('setContactFormVisible', true)
         },
         goToWorks() {
@@ -70,6 +71,9 @@ export default {
                     easingFunction: 'easeInOutCubic'
                 })
             }
+        },
+        setMobileMenu(value) {
+            store.commit('setMobileMenuVisible', value)
         }
     },
     mounted() {
@@ -78,6 +82,13 @@ export default {
         } else {
             this.show_main = true
         }
+    },
+    computed: {
+        computedClasses() {
+            return {
+                'opened': store.state.mobileMenuVisible,
+            };
+        },
     }
 }
 </script>
@@ -256,11 +267,12 @@ export default {
         padding: 0;
         list-style: none;
         opacity: 0;
-        transition: opacity .3s ease,-webkit-transform .4s cubic-bezier(.694,.048,.335,1);
-        transition: opacity .3s ease,transform .4s cubic-bezier(.694,.048,.335,1);
-        transition: opacity .3s ease,transform .4s cubic-bezier(.694,.048,.335,1),-webkit-transform .4s cubic-bezier(.694,.048,.335,1);
+        transition: opacity .3s ease, -webkit-transform .4s cubic-bezier(.694, .048, .335, 1);
+        transition: opacity .3s ease, transform .4s cubic-bezier(.694, .048, .335, 1);
+        transition: opacity .3s ease, transform .4s cubic-bezier(.694, .048, .335, 1), -webkit-transform .4s cubic-bezier(.694, .048, .335, 1);
         transition-delay: 0s;
         z-index: 26;
+
         a {
             color: white;
             font-size: 30px;
@@ -278,9 +290,9 @@ export default {
         -webkit-transform: translateY(-50%, 15px);
         transform: translate(-50%, 15px);
         opacity: 0;
-        transition: opacity .3s ease,-webkit-transform .4s cubic-bezier(.694,.048,.335,1);
-        transition: opacity .3s ease,transform .4s cubic-bezier(.694,.048,.335,1);
-        transition: opacity .3s ease,transform .4s cubic-bezier(.694,.048,.335,1),-webkit-transform .4s cubic-bezier(.694,.048,.335,1);
+        transition: opacity .3s ease, -webkit-transform .4s cubic-bezier(.694, .048, .335, 1);
+        transition: opacity .3s ease, transform .4s cubic-bezier(.694, .048, .335, 1);
+        transition: opacity .3s ease, transform .4s cubic-bezier(.694, .048, .335, 1), -webkit-transform .4s cubic-bezier(.694, .048, .335, 1);
         transition-delay: 0s;
         list-style: none;
         z-index: 26;

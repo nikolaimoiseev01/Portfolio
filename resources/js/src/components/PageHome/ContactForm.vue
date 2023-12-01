@@ -1,6 +1,26 @@
 <template>
     <div :class="computedClasses" class="contact-about-block-wrap">
         <div class="contact-about-wrap">
+            <div class="contact-wrap">
+                <PageTransition class="part-page" :transitionMode="transitionMode"/>
+                <div class="giga-text">Связаться</div>
+                <form v-if="!formSubmitted" @submit.prevent="submitForm" action="">
+                    <h2>Давайте обсудим ваш проект</h2>
+                    <InputText v-model="formData.name">Имя</InputText>
+                    <InputText v-model="formData.contacts">
+                        Ваши контакты
+                        <span>(Телефон/Telegram/Email)</span>
+                    </InputText>
+                    <InputText v-model="formData.desc">Кратко опишите ваш проект</InputText>
+                    <Button :buttonMode="buttonMode">Отправить сообщение</Button>
+                </form>
+
+                <div v-if="formSubmitted" class="form-submitted-wrap">
+                    <h2>Спасибо! Я скоро с вами свяжусь.</h2>
+                    <a @click="makeFormBack" class="link">Заполнить еще раз</a>
+                </div>
+                <div @click="closeContactForm" class="close-contact"><span></span><span></span></div>
+            </div>
             <div class="about-wrap">
                 <div class="giga-text">Обо мне</div>
                 <h2>Обо мне</h2>
@@ -63,26 +83,6 @@
                 </div>
 
             </div>
-            <div class="contact-wrap">
-                <PageTransition class="part-page" :transitionMode="transitionMode"/>
-                <div class="giga-text">Связаться</div>
-                <form v-if="!formSubmitted" @submit.prevent="submitForm" action="">
-                    <h2>Давайте обсудим ваш проект</h2>
-                    <InputText v-model="formData.name">Имя</InputText>
-                    <InputText v-model="formData.contacts">
-                        Ваши контакты
-                        <span>(Телефон/Telegram/Email)</span>
-                    </InputText>
-                    <InputText v-model="formData.desc">Кратко опишите ваш проект</InputText>
-                    <Button :buttonMode="buttonMode">Отправить сообщение</Button>
-                </form>
-
-                <div v-if="formSubmitted" class="form-submitted-wrap">
-                    <h2>Спасибо! Я скоро с вами свяжусь.</h2>
-                    <a @click="makeFormBack" class="link">Заполнить еще раз</a>
-                </div>
-                <div @click="closeContactForm" class="close-contact"><span></span><span></span></div>
-            </div>
         </div>
     </div>
 
@@ -108,6 +108,15 @@ export default {
             transitionMode: false,
             formSubmitted: false
         };
+    },
+    watch: {
+        '$store.state.contactFormVisible': function () {
+            if(store.state.contactFormVisible) {
+                store.commit('setMainPageHidden', true)
+            } else {
+                store.commit('setMainPageHidden', false)
+            }
+        }
     },
     computed: {
         buttonMode() {
@@ -155,8 +164,6 @@ export default {
                 .catch(error => {
                     console.error(error);
                 });
-
-            // Добавьте здесь логику для отправки сообщения
         },
 
         makeFormBack() {
@@ -181,7 +188,7 @@ export default {
 
 .contact-about-block-wrap {
     background: rgba(17, 17, 17, 0.82);
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -193,21 +200,23 @@ export default {
 
 
     .contact-about-wrap {
+        position: absolute;
         -webkit-transform-style: preserve-3d;
         transform-style: preserve-3d;
-        top: 50%;
-        left: 50%;
         -webkit-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
         display: flex;
         width: 1000px;
         height: 90%;
-        position: fixed;
         overflow: hidden;
         /*visibility: hidden;*/
         transition: visibility 1s, z-index 1s, box-shadow .3s;
         z-index: 60;
         visibility: hidden;
+
+
 
         .giga-text {
             font-size: 100px;
@@ -222,14 +231,18 @@ export default {
             background: $color-main-bright;
             display: flex;
             flex-direction: column;
+            position: absolute;
+            height:-webkit-fill-available;
+            left: 0;
             gap: 30px;
             padding: 80px 40px 0 40px;
             align-items: center;
-            position: relative;
             overflow: hidden;
             top: 200px;
             transition: .45s cubic-bezier(.694, .048, .335, 1);
             opacity: 0;
+            -webkit-transform: translateY(100%);
+            transform: translateY(100%);
 
             h2 {
                 color: $color-main-dark;
@@ -336,6 +349,8 @@ export default {
             .detailed-contacts-wrap {
                 margin-top: 20px;
             }
+
+
         }
 
         .contact-wrap {
@@ -343,15 +358,20 @@ export default {
             display: flex;
             flex-direction: column;
             gap: 30px;
+            -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
             //justify-content: center;
             align-items: flex-start;
             //padding: 40px;
-            position: relative;
+            position: absolute;
+            right: 0;
+            height: -webkit-fill-available;
             overflow: hidden;
             background-color: $color-main-dark;
             bottom: 200px;
             transition: .45s cubic-bezier(.694, .048, .335, 1);
             opacity: 0;
+            padding: 80px 40px 0 40px;
 
             .giga-text {
                 bottom: 0;
@@ -362,7 +382,6 @@ export default {
 
             form {
                 display: flex;
-                padding: 80px 40px 0 40px;
                 flex-direction: column;
                 gap: 40px;
 
@@ -471,28 +490,73 @@ export default {
             }
         }
 
-
     }
 
     &.active {
         visibility: visible;
         opacity: 1;
-        z-index: 10;
+        z-index: 100;
 
         .contact-about-wrap {
             visibility: visible;
             box-shadow: 0 20px 80px 0 rgba(0, 0, 0, .55);
             z-index: 60;
             transition: visibility 1s, z-index 1s, box-shadow .5s ease .4s;
+            //height: max-content;
+            //top: inherit;
+            //left: inherit;
+            //transform: inherit;
 
             .about-wrap {
                 top: 0;
                 opacity: 1;
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
             }
 
             .contact-wrap {
                 bottom: 0;
                 opacity: 1;
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+            }
+        }
+
+    }
+
+
+    @include media-tablets-768 {
+        position: fixed;
+        height: 100%;
+
+        .contact-about-wrap {
+            display: inherit;
+            width: 100%;
+            height: 100%;
+            overflow: scroll;
+
+            .about-wrap, .contact-wrap {
+                width: 100%;
+                position: relative;
+                top: auto;
+                left: auto;
+                float: left;
+                height: auto !important;
+            }
+
+            .about-wrap {
+                order: 2;
+                padding: 20px 40px;
+            }
+
+            .contact-wrap {
+                padding: 40px;
+
+                form {
+                    width: 80%;
+                    margin: auto;
+                }
+
             }
         }
 

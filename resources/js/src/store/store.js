@@ -5,12 +5,17 @@ import { createStore } from 'vuex'
 const store = createStore({
     state () {
         return {
+            mainPageHidden: false,
             footerVisible: false,
             contactFormVisible: false,
-            pageTransitionVisible: true
+            pageTransitionVisible: true,
+            mobileMenuVisible: false
         }
     },
     mutations: {
+        setMainPageHidden (state, value) {
+            state.mainPageHidden = value;
+        },
         setFooterVisible (state, value) {
             state.footerVisible = value;
         },
@@ -19,6 +24,9 @@ const store = createStore({
         },
         setPageTransitionVisible (state, value) {
             state.pageTransitionVisible = value;
+        },
+        setMobileMenuVisible (state, value) {
+            state.mobileMenuVisible = value;
         }
     }
 })

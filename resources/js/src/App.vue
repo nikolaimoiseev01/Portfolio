@@ -1,14 +1,16 @@
 <template>
-    <contact-form></contact-form>
-    <main class="main">
+
+    <main :class="computedClasses" class="main">
+        <contact-form></contact-form>
         <router-view v-slot="{ Component }">
             <transition name="page-opacity" mode="out-in">
                 <component :is="Component"/>
             </transition>
         </router-view>
+        <Footer></Footer>
+        <PageTransition class="full-page"/>
     </main>
-    <Footer></Footer>
-    <PageTransition class="full-page"/>
+
 </template>
 
 <script>
@@ -51,11 +53,23 @@ export default {
     },
     mounted() {
         console.log("%cПриветствую тебя на %cтёмной%c технической стороне сайта! :)", "", "text-decoration: line-through;", "");
+    },
+    computed: {
+        computedClasses() {
+            return {
+                'hidden': store.state.mainPageHidden,
+            };
+        },
     }
 }
 </script>
 
 <style lang="less" scoped>
+main.hidden {
+    height: 100vh;
+    overflow: hidden;
+}
+
 .page-opacity-enter-active,
 .page-opacity-leave-active {
     transition: 500ms ease all;
