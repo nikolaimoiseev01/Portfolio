@@ -211,8 +211,8 @@ export default {
 
     .close-trigger {
         position: absolute;
-        top: 30px;
-        right: 20px;
+        top: 50px;
+        right: 30px;
         display: none;
         -webkit-transform: scale(.75);
         transform: scale(.75);
@@ -255,20 +255,36 @@ export default {
         padding: 0;
         list-style: none;
         opacity: 0;
-        transition: opacity .3s ease, -webkit-transform .4s cubic-bezier(.694, .048, .335, 1);
-        transition: opacity .3s ease, transform .4s cubic-bezier(.694, .048, .335, 1);
-        transition: opacity .3s ease, transform .4s cubic-bezier(.694, .048, .335, 1), -webkit-transform .4s cubic-bezier(.694, .048, .335, 1);
+        transition: opacity .3s ease,-webkit-transform .4s cubic-bezier(.694,.048,.335,1);
+        transition: opacity .3s ease,transform .4s cubic-bezier(.694,.048,.335,1);
+        transition: opacity .3s ease,transform .4s cubic-bezier(.694,.048,.335,1),-webkit-transform .4s cubic-bezier(.694,.048,.335,1);
         transition-delay: 0s;
         z-index: 26;
-        opacity: 1;
-        transition-delay: .4s;
-        -webkit-transform: translateY(-60%);
-        transform: translateY(-60%);
-
         a {
             color: white;
             font-size: 30px;
         }
+    }
+
+    .bottom-row {
+        display: flex;
+        position: absolute;
+        bottom: 80px;
+        left: 50%;
+        width: 90%;
+        margin: 0;
+        padding: 0;
+        -webkit-transform: translateY(-50%, 15px);
+        transform: translate(-50%, 15px);
+        opacity: 0;
+        transition: opacity .3s ease,-webkit-transform .4s cubic-bezier(.694,.048,.335,1);
+        transition: opacity .3s ease,transform .4s cubic-bezier(.694,.048,.335,1);
+        transition: opacity .3s ease,transform .4s cubic-bezier(.694,.048,.335,1),-webkit-transform .4s cubic-bezier(.694,.048,.335,1);
+        transition-delay: 0s;
+        list-style: none;
+        z-index: 26;
+        max-width: 200px;
+        gap: 20px;
     }
 
     &.opened {
@@ -287,6 +303,20 @@ export default {
         &:before, &:after {
             -webkit-transform: translateX(0);
             transform: translateX(0);
+        }
+
+        .mobile-nav-links {
+            opacity: 1;
+            transition-delay: .4s;
+            -webkit-transform: translateY(-60%);
+            transform: translateY(-60%);
+        }
+
+        .bottom-row {
+            opacity: 1;
+            transition-delay: .45s;
+            -webkit-transform: translateY(0);
+            transform: translate(-50%, 0);
         }
 
         .close-trigger {

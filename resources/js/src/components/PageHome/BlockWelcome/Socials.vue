@@ -95,9 +95,13 @@ export default {
 
     &.bottom-row {
         position: absolute;
-        bottom: 30px;
-        left: 15%;
+        bottom: 80px;
+        left: 50%;
+        transform: translateX(-50%);
         z-index: 50;
+        flex-wrap: wrap;
+        max-width: 300px;
+        justify-content: center;
         gap: 20px;
         svg {
             width: 35px;
