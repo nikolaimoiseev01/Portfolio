@@ -92,6 +92,12 @@ export default {
     @include media-mobiles-600 {
         max-width: 300px !important;
     }
+
+    @include media-mobiles-480 {
+        p {
+            font-size: 16px;
+        }
+    }
 }
 
 </style>

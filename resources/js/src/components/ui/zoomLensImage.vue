@@ -244,7 +244,7 @@ export default {
     }
 }
 
-@include media-tablets-768 {
+@media (max-width: 1025px) {
     img {
         max-width: 90%;
         height: fit-content;

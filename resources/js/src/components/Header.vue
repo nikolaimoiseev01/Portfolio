@@ -26,7 +26,7 @@
             <i class="close-trigger-bar right"></i>
         </span>
         <ul class="mobile-nav-links">
-            <router-link v-if="show_main" class="link" to="/">Главная</router-link>
+            <router-link @click="setMobileMenu(false)" v-if="show_main" class="link" to="/">Главная</router-link>
             <router-link @click="goToWorks" class="link" to="/#BlockWorks">Работы</router-link>
             <a class="link" @click="openContactForm">Контакты</a>
             <a class="link" @click="openContactForm">Обо мне</a>

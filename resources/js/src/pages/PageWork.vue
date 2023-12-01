@@ -316,13 +316,18 @@ ul {
             @include media-tablets-768 {
                 font-size: 40px;
             }
+
+
+            @media (max-width: 400px) {
+                font-size: 30px;
+            }
         }
     }
 }
 
 .intro-block-wrap {
     width: 100%;
-    padding: 50px 0;
+    padding: 50px 5%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -470,6 +475,11 @@ ul {
         .next-work-title {
             font-size: 30px;
             color: $color-main-dark;
+
+            @include media-tablets-768 {
+                font-size: 25px;
+                max-width: 60%;
+            }
         }
     }
 
@@ -519,6 +529,14 @@ ul {
         svg {
             width: 150px;
             height: 70px;
+        }
+
+        @include media-tablets-768 {
+            right: 10px;
+        }
+
+        @include media-mobiles-480 {
+            right: 0;
         }
     }
 

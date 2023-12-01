@@ -1,10 +1,11 @@
-import { createApp } from 'vue'
-import { createStore } from 'vuex'
+import {createApp} from 'vue'
+import {createStore} from 'vuex'
 
 // Create a new store instance.
 const store = createStore({
-    state () {
+    state() {
         return {
+            pageFullyLoaded: false,
             mainPageHidden: false,
             footerVisible: false,
             contactFormVisible: false,
@@ -13,19 +14,22 @@ const store = createStore({
         }
     },
     mutations: {
-        setMainPageHidden (state, value) {
+        setPageFullyLoaded(state, value) {
+            state.pageFullyLoaded = value;
+        },
+        setMainPageHidden(state, value) {
             state.mainPageHidden = value;
         },
-        setFooterVisible (state, value) {
+        setFooterVisible(state, value) {
             state.footerVisible = value;
         },
-        setContactFormVisible (state, value) {
+        setContactFormVisible(state, value) {
             state.contactFormVisible = value;
         },
-        setPageTransitionVisible (state, value) {
+        setPageTransitionVisible(state, value) {
             state.pageTransitionVisible = value;
         },
-        setMobileMenuVisible (state, value) {
+        setMobileMenuVisible(state, value) {
             state.mobileMenuVisible = value;
         }
     }

@@ -1,11 +1,13 @@
 <template>
     <div v-bind="$attrs" ref="text_overlay" class="text-loading-mask">
         <div :class="{ 'loaded': isVisible}" class="text-loading-overlay"></div>
-            <slot></slot>
+        <slot></slot>
     </div>
 </template>
 
 <script>
+import store from "@/src/store/store.js";
+
 export default {
     name: "TextOverlay.vue",
     data() {
@@ -13,26 +15,34 @@ export default {
             isVisible: false,
         };
     },
-    mounted() {
-        const options = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.5, // Порог видимости
-        };
+    watch: {
+        '$store.state.pageTransitionVisible': function () {
+            if (!store.state.pageTransitionVisible) {
+                this.goTextOverlay()
+            }
+        }
+    },
+    methods: {
+        goTextOverlay() {
+            const options = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5, // Порог видимости
+            };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                setTimeout(() => {
-                    if(entry.isIntersecting) {
-                        this.isVisible = true;
-                    }
-                }, 3000);
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    setTimeout(() => {
+                        if (entry.isIntersecting) {
+                            this.isVisible = true;
+                        }
+                    }, 1000);
 
-            });
-        }, options);
+                });
+            }, options);
 
-        observer.observe(this.$refs.text_overlay);
-
+            observer.observe(this.$refs.text_overlay);
+        }
     }
 }
 </script>

@@ -179,6 +179,11 @@ export default {
         closeContactForm() {
             store.commit('setContactFormVisible', false)
         }
+    },
+    mounted() {
+        document.querySelector('a').addEventListener('click', function() {
+            console.log(5)
+        })
     }
 }
 </script>
