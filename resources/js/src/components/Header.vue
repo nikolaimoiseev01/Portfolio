@@ -104,6 +104,7 @@ export default {
     top: 0;
     left: 0;
     z-index: 5;
+    background: rgba(28, 29, 37, 0.95);
 
     .header {
         display: flex;
