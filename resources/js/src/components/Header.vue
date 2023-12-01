@@ -127,6 +127,7 @@ export default {
                 height: 42px;
                 cursor: pointer;
 
+
                 .menu-trigger-bar {
                     display: block;
                     width: 100%;
@@ -165,7 +166,9 @@ export default {
                 }
 
                 .menu-trigger {
-                    display: block;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
                 }
             }
         }
@@ -343,7 +346,6 @@ export default {
 }
 
 @include media-tablets-768 {
-
 
     .close-trigger, .mobile-menu, .nav-toggle {
         display: block !important;
