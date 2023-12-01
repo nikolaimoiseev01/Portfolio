@@ -302,6 +302,10 @@ export default {
             text-align: center;
             align-items: center;
         }
+
+        .work-mask-number {
+            display: none;
+        }
     }
 }
 </style>
