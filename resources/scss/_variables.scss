@@ -1,0 +1,42 @@
+// Colors
+$color-main-dark: #1C1D25;
+$color-main-grey: #b0b2c3;
+$color-main-bright: #ECECEC;
+
+
+// Media
+$media-desktops-1200: 1200px;
+$media-laptops-1024: 1024px;
+$media-tablets-768: 768px;
+$media-mobiles-600: 600px;
+$media-mobiles-480: 480px;
+
+@mixin media-desktops-1200 {
+    @media (max-width: 1200px) {
+        @content;
+    }
+}
+
+@mixin media-laptops-1024 {
+    @media (max-width: 1020px) {
+        @content;
+    }
+}
+
+@mixin media-tablets-768 {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin media-mobiles-600 {
+    @media (max-width: 600px) {
+        @content;
+    }
+}
+
+@mixin media-mobiles-480 {
+    @media (max-width: 480px) {
+        @content;
+    }
+}

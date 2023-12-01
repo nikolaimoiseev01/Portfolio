@@ -5,7 +5,7 @@
             <Header></Header>
             <WelcomeInfo></WelcomeInfo>
             <LogoBlue></LogoBlue>
-            <Socials></Socials>
+            <Socials class="right-column"></Socials>
             <WelcomeShapes></WelcomeShapes>
             <GoToWorks></GoToWorks>
         </div>

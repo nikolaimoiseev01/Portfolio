@@ -223,7 +223,7 @@ export default {
 <style lang="scss">
 @import "/resources/scss/app";
 
-.welcome-wrap .info-wrap p {
+.page-work .welcome-wrap .info-wrap p {
     font-family: 'EB Garamond', serif;
     line-height: 30px;
     letter-spacing: 2px;

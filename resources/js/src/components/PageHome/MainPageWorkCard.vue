@@ -63,7 +63,7 @@ export default {
 
 
 <style lang="scss">
-@import "/resources/scss/app";
+@import "/resources/scss/_variables";
 
 .work-text-section {
     p {
@@ -289,6 +289,18 @@ export default {
             -webkit-transform: scale(1.05) translateX(0) translateY(-50%);
             transform: scale(1.05) translateX(0) translateY(-50%);
             transition-delay: .6s;
+        }
+    }
+
+    @include media-tablets-768 {
+        //display: flex;
+
+        .work-text-section {
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            align-items: center;
         }
     }
 }

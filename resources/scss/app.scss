@@ -1,11 +1,9 @@
+@import 'variables';
+
 * {
     margin: 0;
     box-sizing: border-box;
 }
-
-$color-main-dark: #1C1D25;
-$color-main-grey: #b0b2c3;
-$color-main-bright: #ECECEC;
 
 #app {
     position: relative;
@@ -34,16 +32,13 @@ body {
     }
 }
 
-
-
-
-//h1 {
-//    font-family: "Unbounded-Bold";
-//}
-
 h1 {
     font-family: "Unbounded-Bold";
     font-size: 35px;
+
+    @include media-desktops-1200 {
+        font-size: 30px;
+    }
 }
 
 h2 {
@@ -58,21 +53,16 @@ h2 {
     }
 }
 
-
 p {
-    //font-family: 'Caveat', cursivnonoe;
-    //font-family: 'Klee One', cursive;
     font-family: 'Merriweather', serif;
-    //font-family: 'Montserrat', sans-serif;
-    //font-family: 'Open Sans', sans-serif;
-    //font-family: 'Roboto', sans-serif;
-    //font-family: 'EB Garamond', serif;
-    //font-family: 'Montserrat', sans-serif;
     line-height: 25px;
     letter-spacing: 2px;
     font-size: 17px;
     color: $color-main-dark;
 
+    @include media-tablets-768 {
+        font-size: 15px;
+    }
 }
 
 input {
@@ -131,6 +121,10 @@ a {
                 left: 0;
             }
         }
+
+        @include media-tablets-768 {
+            font-size: 15px;
+        }
     }
 
 }
@@ -138,6 +132,7 @@ a {
 
 .width-restricted {
     max-width: 1100px;
+    width:90%;
     margin: auto;
 }
 

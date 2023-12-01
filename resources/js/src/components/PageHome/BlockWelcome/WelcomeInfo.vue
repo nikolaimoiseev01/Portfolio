@@ -36,6 +36,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "/resources/scss/app";
+
 .info-wrap {
     position: absolute !important;
     top: 50%;
@@ -51,16 +53,43 @@ export default {
         color: white;
         font-size: 60px;
         display: inline-block;
+
+        @include media-desktops-1200 {
+            font-size: 50px;
+        }
+
+        @include media-tablets-768 {
+            font-size: 40px;
+        }
     }
 
     p {
         font-style: italic;
         font-weight: 300;
         color: white;
+        font-family: 'EB Garamond', serif;
+        line-height: 30px;
+        letter-spacing: 2px;
+        font-size: 26px;
     }
 
     #welcome-cta {
         width: 170px;
+    }
+
+    @include media-tablets-768 {
+        max-width: 400px !important;
+        left: 40px;
+        transform: translate(0, -50%);
+
+        p {
+            font-size: 20px;
+        }
+
+    }
+
+    @include media-mobiles-600 {
+        max-width: 300px !important;
     }
 }
 

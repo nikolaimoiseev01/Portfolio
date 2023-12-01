@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+@import "/resources/scss/app";
 
 #logo_blue {
     width: 480px;
@@ -54,6 +54,16 @@ export default {
         to {
             stroke-dashoffset: 0; /* Конечное смещение линии (нет смещения - полная длина) */
         }
+    }
+
+    @include media-desktops-1200 {
+        width: 400px;
+    }
+
+    @include media-tablets-768 {
+        width: 200px;
+        right: 20px;
+        transform: translate(0, -50%);
     }
 }
 </style>
