@@ -322,6 +322,10 @@ ul {
                 font-size: 30px;
             }
         }
+
+        @include media-tablets-768 {
+            width: 90%;
+        }
     }
 }
 

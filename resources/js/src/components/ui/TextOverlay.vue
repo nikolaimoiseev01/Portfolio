@@ -51,8 +51,6 @@ export default {
 .text-loading-mask {
     display: inline-block;
     position: relative;
-    padding-top: 10px;
-    padding-right: 10px;
     overflow: hidden;
     width: fit-content;
     transition: all .2s ease;
