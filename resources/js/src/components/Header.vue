@@ -246,11 +246,12 @@ export default {
         position: absolute;
         -webkit-transform-style: preserve-3d;
         transform-style: preserve-3d;
-        top: 50%;
+        top: 40%;
         -webkit-transform: translateY(-50%);
         transform: translateY(-50%);
         left: 15%;
         width: 70%;
+        text-align: center;
         margin: 0;
         padding: 0;
         list-style: none;
@@ -269,7 +270,7 @@ export default {
     .bottom-row {
         display: flex;
         position: absolute;
-        bottom: 80px;
+        bottom: 110px;
         left: 50%;
         width: 90%;
         margin: 0;
