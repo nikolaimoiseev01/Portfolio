@@ -74,126 +74,129 @@ export default {
     },
     methods: {
         insertExternalSource: function () {
-            var mainSizeHeight = this.size.height;
-            var mainSizeWidth = this.size.width;
-            const lens = this.$refs.lens;
-            const input_image_size = this.image
-            const input_image = {
-                'width': this.width,
-                'height': this.height
-            }
-
-            function zoomMagnifyingGlasses(imageElement, zoomLevel) {
-
-                var image,
-                    width,
-                    height;
-
-                image = document.querySelector(imageElement);
-
-                lens.style.position = "absolute";
-                lens.style.border = "1px solid #000";
-                lens.style.borderRadius = "25px";
-                lens.style.cursor = "none";
-                lens.style.width = mainSizeWidth;
-                lens.style.height = mainSizeHeight;
-
-                image.parentElement.insertBefore(lens, image);
+            if (window.outerWidth > 768) {
 
 
-                lens.style.backgroundImage = "";
+                var mainSizeHeight = this.size.height;
+                var mainSizeWidth = this.size.width;
+                const lens = this.$refs.lens;
+                const input_image_size = this.image
+                const input_image = {
+                    'width': this.width,
+                    'height': this.height
+                }
 
-                lens.style.backgroundRepeat = "no-repeat";
-                lens.style.backgroundSize = (input_image.width * zoomLevel) + "px " + (input_image.height * zoomLevel) + "px";
+                function zoomMagnifyingGlasses(imageElement, zoomLevel) {
 
-                width = lens.offsetWidth / 2;
-                height = lens.offsetHeight / 2;
+                    var image,
+                        width,
+                        height;
 
-                lens.addEventListener("mousemove", movingMagnifier);
-                image.addEventListener("mousemove", movingMagnifier);
+                    image = document.querySelector(imageElement);
 
-                lens.addEventListener("touchmove", movingMagnifier);
-                image.addEventListener("touchmove", movingMagnifier);
+                    lens.style.position = "absolute";
+                    lens.style.border = "1px solid #000";
+                    lens.style.borderRadius = "25px";
+                    lens.style.cursor = "none";
+                    lens.style.width = mainSizeWidth;
+                    lens.style.height = mainSizeHeight;
 
-                function movingMagnifier(e) {
+                    image.parentElement.insertBefore(lens, image);
 
-                    var pos,
-                        x,
-                        y;
 
-                    e.preventDefault();
+                    lens.style.backgroundImage = "";
 
-                    pos = getCursorPosition(e, image);
+                    lens.style.backgroundRepeat = "no-repeat";
+                    lens.style.backgroundSize = (input_image.width * zoomLevel) + "px " + (input_image.height * zoomLevel) + "px";
 
-                    x = pos.x;
-                    y = pos.y;
+                    width = lens.offsetWidth / 2;
+                    height = lens.offsetHeight / 2;
 
-                    if (x > image.width - (width / zoomLevel)) {
+                    lens.addEventListener("mousemove", movingMagnifier);
+                    image.addEventListener("mousemove", movingMagnifier);
 
-                        x = image.width - (width / zoomLevel);
+                    lens.addEventListener("touchmove", movingMagnifier);
+                    image.addEventListener("touchmove", movingMagnifier);
+
+                    function movingMagnifier(e) {
+
+                        var pos,
+                            x,
+                            y;
+
+                        e.preventDefault();
+
+                        pos = getCursorPosition(e, image);
+
+                        x = pos.x;
+                        y = pos.y;
+
+                        if (x > image.width - (width / zoomLevel)) {
+
+                            x = image.width - (width / zoomLevel);
+
+                        }
+
+                        if (x < width / zoomLevel) {
+
+                            x = width / zoomLevel;
+
+                        }
+
+                        if (y > image.height - (height / zoomLevel)) {
+
+                            y = image.height - (height / zoomLevel);
+
+                        }
+
+                        if (y < height / zoomLevel) {
+
+                            y = height / zoomLevel;
+
+                        }
+
+                        lens.style.left = (x - width) + "px";
+                        lens.style.top = (y - height) + "px";
+
+                        lens.style.backgroundPosition = "-" + ((x * zoomLevel) - width) + "px -" + ((y * zoomLevel) - height) + "px";
 
                     }
-
-                    if (x < width / zoomLevel) {
-
-                        x = width / zoomLevel;
-
-                    }
-
-                    if (y > image.height - (height / zoomLevel)) {
-
-                        y = image.height - (height / zoomLevel);
-
-                    }
-
-                    if (y < height / zoomLevel) {
-
-                        y = height / zoomLevel;
-
-                    }
-
-                    lens.style.left = (x - width) + "px";
-                    lens.style.top = (y - height) + "px";
-
-                    lens.style.backgroundPosition = "-" + ((x * zoomLevel) - width) + "px -" + ((y * zoomLevel) - height) + "px";
 
                 }
 
+                // Help functions
+
+                function getCursorPosition(e, imageElement) {
+
+                    var image,
+                        position_x = 0,
+                        position_y = 0;
+
+                    e = e || window.event;
+
+                    image = imageElement.getBoundingClientRect();
+
+                    position_x = e.pageX - image.left;
+                    position_y = e.pageY - image.top;
+
+                    position_x = position_x - window.pageXOffset;
+                    position_y = position_y - window.pageYOffset;
+
+                    return {x: position_x, y: position_y};
+
+                }
+
+                const zlvl = Number(this.zoomlevel);
+
+                zoomMagnifyingGlasses("#" + this.id, zlvl);
             }
-
-            // Help functions
-
-            function getCursorPosition(e, imageElement) {
-
-                var image,
-                    position_x = 0,
-                    position_y = 0;
-
-                e = e || window.event;
-
-                image = imageElement.getBoundingClientRect();
-
-                position_x = e.pageX - image.left;
-                position_y = e.pageY - image.top;
-
-                position_x = position_x - window.pageXOffset;
-                position_y = position_y - window.pageYOffset;
-
-                return {x: position_x, y: position_y};
-
-            }
-
-            const zlvl = Number(this.zoomlevel);
-
-            zoomMagnifyingGlasses("#" + this.id, zlvl);
-
         },
         setShowLens: function () {
             this.showLens = false
         },
         updateFunction: function () {
             setTimeout(() => {
-                if(document.querySelector("#" + this.id)) {
+                if (document.querySelector("#" + this.id)) {
                     this.insertExternalSource()
                 }
             }, 1500)
@@ -238,7 +241,13 @@ export default {
         padding: 2px 8px;
         color: $color-main-bright;
         border-radius: 4px;
+    }
+}
 
+@include media-tablets-768 {
+    img {
+        max-width: 90%;
+        height: fit-content;
     }
 }
 </style>

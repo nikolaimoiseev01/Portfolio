@@ -181,7 +181,7 @@ export default {
                 .then(async response => {
                     this.all_works = response.data;
                     this.work = this.all_works[this.$route.params.id - 1];
-                    if(this.work) {
+                    if (this.work) {
                         this.cover_card = "url(" + this.work.cover_full + ")";
 
                         if (this.$route.params.id < this.all_works.length) {
@@ -199,7 +199,6 @@ export default {
                         this.width_detailed_2 = dimensions_2.width
 
                     }
-
 
 
                     this.show_image = true
@@ -229,10 +228,21 @@ export default {
     letter-spacing: 2px;
     font-size: 26px;
     color: $color-main-bright;
+
 }
 
-ul li {
-    margin-top: 20px;
+ul {
+    li {
+        margin-top: 20px;
+
+        @include media-tablets-768 {
+            list-style-type: none;
+        }
+    }
+
+    @include media-tablets-768 {
+        padding: 0;
+    }
 }
 </style>
 
@@ -302,6 +312,10 @@ ul li {
         h1 {
             font-size: 60px;
             margin-bottom: 20px;
+
+            @include media-tablets-768 {
+                font-size: 40px;
+            }
         }
     }
 }
@@ -320,6 +334,11 @@ ul li {
         color: white;
         width: 90%;
         max-width: 1000px;
+
+        @include media-tablets-768 {
+            text-align: center;
+            margin: auto;
+        }
     }
 }
 
@@ -352,7 +371,27 @@ ul li {
             }
 
             img {
-                //width: 50%;
+                width: 50%;
+                height: min-content;
+
+                @include media-desktops-1200 {
+                    width: 60%;
+                }
+            }
+
+
+            @include media-laptops-1024 {
+                flex-direction: column;
+                align-items: center;
+
+                .text, img {
+                    width: 90%;
+                    align-items: center;
+                }
+
+                img {
+                    max-width: 550px;
+                }
             }
         }
 
@@ -372,11 +411,30 @@ ul li {
                     color: white;
                 }
             }
+
+            @include media-tablets-768 {
+                &, .stacks-wrap {
+                    align-items: center;
+                    justify-content: center;
+                }
+
+
+            }
         }
 
         .block-examples {
             img {
                 //width: 100%;
+            }
+
+            @include media-tablets-768 {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                img {
+                    max-width: 90%;
+                }
             }
         }
     }
