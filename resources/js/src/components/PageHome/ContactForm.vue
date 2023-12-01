@@ -224,6 +224,10 @@ export default {
             opacity: .07;
             font-family: 'Unbounded-ExtraBold';
             z-index: 0;
+
+            @include media-tablets-768 {
+                display: none;
+            }
         }
 
         .about-wrap {
