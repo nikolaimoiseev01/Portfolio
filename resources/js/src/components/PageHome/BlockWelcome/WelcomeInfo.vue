@@ -84,6 +84,7 @@ export default {
 
         p {
             font-size: 20px;
+            text-align: left;
         }
 
     }
