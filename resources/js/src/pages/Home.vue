@@ -27,7 +27,7 @@ export default {
             const myEl = document.getElementById('BlockWorks')
 
             if (myEl) {
-                setTimeout(()=> {
+                setTimeout(() => {
                     this.$smoothScroll({
                         scrollTo: myEl, // scrollTo is also allowed to be number
                         duration: 1000,       // animation duration in ms
@@ -44,23 +44,25 @@ export default {
     },
     methods: {
         parallaxEffect() {
-            const parallaxContainer = this.$refs.parallaxContainer;
-            const welcome = document.getElementById('BlockWelcome');
-            const works = document.getElementById('BlockWorks');
+            if (window.outerWidth > 768) {
+                const parallaxContainer = this.$refs.parallaxContainer;
+                const welcome = document.getElementById('BlockWelcome');
+                const works = document.getElementById('BlockWorks');
 
-            // Вычисляем значение для параллакса (можно настроить под свои нужды)
-            const scrollPosition = window.scrollY;
-            const parallaxValue = scrollPosition * 0.5;
+                // Вычисляем значение для параллакса (можно настроить под свои нужды)
+                const scrollPosition = window.scrollY;
+                const parallaxValue = scrollPosition * 0.5;
 
 
-            // Применяем эффект параллакса
-            welcome.style.transform = `translateY(${parallaxValue}px)`;
-            works.style.transform = `translateY(-${parallaxValue}px)`;
+                // Применяем эффект параллакса
+                welcome.style.transform = `translateY(${parallaxValue}px)`;
+                works.style.transform = `translateY(-${parallaxValue}px)`;
 
-            // Устанавливаем высоту контейнера равной сумме высот блоков,
-            // чтобы компенсировать изменение высоты при скролле
-            if ((window.innerHeight + Math.round(window.scrollY)) < document.body.offsetHeight) { // Если не конец страницы
-                parallaxContainer.style.height = welcome.offsetHeight - Math.round(parallaxValue) + works.offsetHeight + 'px';
+                // Устанавливаем высоту контейнера равной сумме высот блоков,
+                // чтобы компенсировать изменение высоты при скролле
+                if ((window.innerHeight + Math.round(window.scrollY)) < document.body.offsetHeight) { // Если не конец страницы
+                    parallaxContainer.style.height = welcome.offsetHeight - Math.round(parallaxValue) + works.offsetHeight + 'px';
+                }
             }
 
         },
