@@ -51,6 +51,7 @@ export default {
     z-index: 1;
     transition: all .3s;
     width: -webkit-fill-available;
+    width: -moz-available;
 
     &.is-hidden {
         -webkit-transform: translateY(30px);
