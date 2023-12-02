@@ -2,7 +2,7 @@
     <kinesis-container  id="BlockWelcome" class="kinesis-container">
         <div class="welcome-wrap">
             <LightCircle></LightCircle>
-            <Header></Header>
+            <Header class="main"></Header>
             <WelcomeInfo></WelcomeInfo>
             <LogoBlue></LogoBlue>
             <Socials class="right-column"></Socials>

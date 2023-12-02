@@ -174,6 +174,9 @@ export default {
         }
     }
 
+    &.main {
+        background: none;
+    }
 
 }
 
