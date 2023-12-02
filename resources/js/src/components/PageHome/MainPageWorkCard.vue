@@ -14,7 +14,7 @@
             <div class="work-text-section">
                 <h1 itemprop="name" class="work-title">{{ work.title }}</h1>
                 <p itemprop="description" v-html="work.desc_card" class="work-subtitle"></p>
-                <Link :to="'/work/' + work.id">Подробнее</Link>
+                <Link @click="closeMenu()" :to="'/work/' + work.id">Подробнее</Link>
             </div>
         </div>
     </a>
@@ -26,6 +26,7 @@
 import Button from "../ui/Button.vue";
 import {Work} from "../../interfaces/Work";
 import Link from "../ui/Link.vue";
+import store from "../../store/store.js";
 
 export default {
     name: "MainPageWorkCard.vue",
@@ -57,6 +58,11 @@ export default {
         }, options);
 
         observer.observe(this.$refs.card);
+    },
+    methods: {
+        closeMenu() {
+            store.commit('setMobileMenuVisible', false)
+        }
     }
 }
 </script>
