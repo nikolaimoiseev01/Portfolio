@@ -220,6 +220,10 @@ export default {
 <style scoped lang="scss">
 @import "/resources/scss/app.scss";
 
+.zoom-lens-image {
+    text-align: center;
+}
+
 .lens {
     position: relative;
     opacity: 0;
