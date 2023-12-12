@@ -267,34 +267,36 @@ export default {
 
     }
 
-    &:hover {
-        .work-mask:after {
-            -webkit-transform: translateX(0);
-            transform: translateX(0);
-        }
+    @media (min-width: 1024px) {
+        &:hover {
+            .work-mask:after {
+                -webkit-transform: translateX(0);
+                transform: translateX(0);
+            }
 
-        .work-mask-number {
-            opacity: 1;
-            -webkit-transform: translateY(0);
-            transform: translateY(0);
-        }
+            .work-mask-number {
+                opacity: 1;
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+            }
 
-        .work-mask-overlay {
-            transition-delay: .4s;
-            -webkit-transform: translateZ(0);
-            transform: translateZ(0);
-
-            &:before {
+            .work-mask-overlay {
                 transition-delay: .4s;
                 -webkit-transform: translateZ(0);
                 transform: translateZ(0);
-            }
-        }
 
-        .work-text-section {
-            -webkit-transform: scale(1.05) translateX(0) translateY(-50%);
-            transform: scale(1.05) translateX(0) translateY(-50%);
-            transition-delay: .6s;
+                &:before {
+                    transition-delay: .4s;
+                    -webkit-transform: translateZ(0);
+                    transform: translateZ(0);
+                }
+            }
+
+            .work-text-section {
+                -webkit-transform: scale(1.05) translateX(0) translateY(-50%);
+                transform: scale(1.05) translateX(0) translateY(-50%);
+                transition-delay: .6s;
+            }
         }
     }
 
