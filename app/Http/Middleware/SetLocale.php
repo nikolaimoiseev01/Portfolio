@@ -33,6 +33,12 @@ class SetLocale
 
     public function handle($request, Closure $next)
     {
+        if($request->ip() == '127.0.0.1') {
+            $country = 'en';
+        } else {
+            $country = Location::get($request->ip()->countryCode);
+        }
+        dd($country);
 //        $country = $this->geoip->getLocation()->country;
 //
 //        // Добавьте здесь логику для определения локали на основе страны
@@ -41,7 +47,6 @@ class SetLocale
 //        app()->setLocale($locale);
 //
 //        dd($request->ip());
-        dd(Location::get($request->ip()));
         return $next($request);
     }
 }
