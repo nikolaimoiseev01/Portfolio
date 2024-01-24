@@ -36,7 +36,7 @@ class SetLocale
         if($request->ip() == '127.0.0.1') {
             $country = 'en';
         } else {
-            $country = Location::get($request->ip()->countryCode);
+            $country = Location::get($request->ip())->countryCode;
         }
         dd($country);
 //        $country = $this->geoip->getLocation()->country;
