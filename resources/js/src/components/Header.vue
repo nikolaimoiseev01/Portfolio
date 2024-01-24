@@ -6,7 +6,10 @@
             </router-link>
             <div class="menu-wrap">
                 <router-link v-if="show_main" class="link" to="/">Главная</router-link>
-                <router-link @click="goToWorks" class="link" to="/#BlockWorks">Работы</router-link>
+                <router-link @click="goToWorks" class="link" to="/#BlockWorks">
+                    {{$t('user.name')}}
+<!--                    Работы-->
+                </router-link>
                 <a class="link" @click="openContactForm">Контакты</a>
                 <a class="link" @click="openContactForm">Обо мне</a>
 

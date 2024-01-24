@@ -1,0 +1,9 @@
+{
+    "user.name": "Vardas",
+    "user.email": "El. paštas",
+    "user.password": "Slaptažodis",
+    "user.password.confirm": "Patvirtinkite Slaptažodį",
+
+    "register.submit": "Registruotis",
+    "register.hasAccount": "Jau užsiregistravęs?"
+}
