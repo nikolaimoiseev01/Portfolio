@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Портфолио Николай</title>
+    <title>{{(strtolower(app()->getLocale()) == 'ru') ? 'Портфолио Николай' : 'Portfolio Nikolai'}}</title>
 
     {{--Favicon--}}
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
