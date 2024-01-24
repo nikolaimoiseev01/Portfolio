@@ -1,6 +1,6 @@
 <template>
     <a @click="goToWorks" class="hero-go-next">
-        <p>Работы</p>
+        <p>{{$t('main_page.welcome.to_works')}} </p>
         <span class="arrow"></span>
     </a>
 </template>

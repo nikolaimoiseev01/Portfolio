@@ -3,38 +3,28 @@
         <div class="contact-about-wrap">
             <div class="contact-wrap">
                 <PageTransition class="part-page" :transitionMode="transitionMode"/>
-                <div class="giga-text">Связаться</div>
+                <div class="giga-text">{{ $t('contact_form.contact.back_text') }}</div>
                 <form v-if="!formSubmitted" @submit.prevent="submitForm" action="">
-                    <h2>Давайте обсудим ваш проект</h2>
-                    <InputText v-model="formData.name">Имя</InputText>
+                    <h2>{{ $t('contact_form.contact.title') }}</h2>
+                    <InputText v-model="formData.name">{{ $t('contact_form.contact.name') }}</InputText>
                     <InputText v-model="formData.contacts">
-                        Ваши контакты
-                        <span>(Телефон/Telegram/Email)</span>
+                        {{ $t('contact_form.contact.contacts') }}
+                        <span>{{ $t('contact_form.contact.contacts_span') }}</span>
                     </InputText>
-                    <InputText v-model="formData.desc">Кратко опишите ваш проект</InputText>
-                    <Button :buttonMode="buttonMode">Отправить сообщение</Button>
+                    <InputText v-model="formData.desc">{{ $t('contact_form.contact.question') }}</InputText>
+                    <Button :buttonMode="buttonMode">{{ $t('contact_form.contact.button') }}</Button>
                 </form>
 
                 <div v-if="formSubmitted" class="form-submitted-wrap">
-                    <h2>Спасибо! Я скоро с вами свяжусь.</h2>
-                    <a @click="makeFormBack" class="link">Заполнить еще раз</a>
+                    <h2>{{ $t('contact_form.contact.see_you') }}</h2>
+                    <a @click="makeFormBack" class="link">{{ $t('contact_form.contact.one_more_time') }}</a>
                 </div>
                 <div @click="closeContactForm" class="close-contact"><span></span><span></span></div>
             </div>
             <div class="about-wrap">
-                <div class="giga-text">Обо мне</div>
+                <div class="giga-text">{{ $t('contact_form.about.title') }}</div>
                 <h2>Обо мне</h2>
-                <p>
-                    Я - Коля. Уже 7 лет занимаюсь WEB-програмированием.
-                    Начал с сайтов на <strong>Wix, Tilda</strong> и дошел до полностью самописных онлайн платформ.
-                    Я использую разные технологии, но чаще всего в своих проектах использую связку
-                    <strong>Laravel+Vue</strong>.
-                    <br>
-                    В моей команде есть <strong>дизайнеры и SEO-специалисты</strong>. Так мы можем охватить весь
-                    жизненный цикл сайта,
-                    начиная от дизайна с нуля до выведения сайта в ТОП-10 поисковых платформ.
-                    Помимо фриланса, сейчас работаю в <strong>Тинькофф</strong> и увлекаюсь барабанами.
-                </p>
+                <p v-html="$t('contact_form.about.text')"></p>
                 <ul class="about-me-list">
                     <li class="vue">
                         <div class="about-me-list-label">React.js</div>
@@ -111,7 +101,7 @@ export default {
     },
     watch: {
         '$store.state.contactFormVisible': function () {
-            if(store.state.contactFormVisible) {
+            if (store.state.contactFormVisible) {
                 store.commit('setMainPageHidden', true)
             } else {
                 store.commit('setMainPageHidden', false)
@@ -181,12 +171,22 @@ export default {
         }
     },
     mounted() {
-        document.querySelector('a').addEventListener('click', function() {
+        document.querySelector('a').addEventListener('click', function () {
             console.log(5)
         })
     }
 }
 </script>
+
+<style>
+p {
+    color: $color-main-dark;
+
+    strong {
+        color: #f06449;
+    }
+}
+</style>
 
 <style lang="scss" scoped>
 @import "/resources/scss/app";
@@ -222,7 +222,6 @@ export default {
         visibility: hidden;
 
 
-
         .giga-text {
             font-size: 100px;
             position: absolute;
@@ -241,7 +240,7 @@ export default {
             display: flex;
             flex-direction: column;
             position: absolute;
-            height:-webkit-fill-available;
+            height: -webkit-fill-available;
             left: 0;
             gap: 30px;
             padding: 80px 40px 0 40px;
@@ -264,13 +263,6 @@ export default {
                 text-wrap: nowrap;
             }
 
-            p {
-                color: $color-main-dark;
-
-                strong {
-                    color: #f06449;
-                }
-            }
 
             .about-me-list {
                 list-style-type: none;

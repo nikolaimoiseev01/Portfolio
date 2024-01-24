@@ -14,7 +14,7 @@
             <div class="work-text-section">
                 <h1 itemprop="name" class="work-title">{{ work.title }}</h1>
                 <p itemprop="description" v-html="work.desc_card" class="work-subtitle"></p>
-                <Link @click="closeMenu()" :to="'/work/' + work.id">Подробнее</Link>
+                <Link @click="closeMenu()" :to="'/work/' + work.id">{{ $t('main_page.welcome.card_button') }}</Link>
             </div>
         </div>
     </a>

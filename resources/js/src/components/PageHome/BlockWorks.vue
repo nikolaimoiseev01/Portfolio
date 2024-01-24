@@ -1,7 +1,7 @@
 <template>
     <section id="BlockWorks" class="works-block-wrap">
         <div class="width-restricted">
-            <h2 class="section-title">Последние работы</h2>
+            <h2 class="section-title">{{$t("main_page.welcome.last_works")}}</h2>
             <div class="works-wrap">
                 <BlockAppearance v-for="work in works">
                     <MainPageWorkCard
@@ -9,7 +9,7 @@
                         :work="work">
                     </MainPageWorkCard>
                 </BlockAppearance>
-                <Link target="_blank" href="https://github.com/nikolaimoiseev01" class="black simple">Больше примеров</Link>
+                <Link target="_blank" href="https://github.com/nikolaimoiseev01" class="black simple">{{$t('main_page.welcome.more_examples')}}</Link>
             </div>
 
         </div>

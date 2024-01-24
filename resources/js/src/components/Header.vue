@@ -7,11 +7,11 @@
             <div class="menu-wrap">
                 <router-link v-if="show_main" class="link" to="/">Главная</router-link>
                 <router-link @click="goToWorks" class="link" to="/#BlockWorks">
-                    {{$t('user.name')}}
+                    {{$t('header.works')}}
 <!--                    Работы-->
                 </router-link>
-                <a class="link" @click="openContactForm">Контакты</a>
-                <a class="link" @click="openContactForm">Обо мне</a>
+                <a class="link" @click="openContactForm">{{$t('header.contacts')}}</a>
+                <a class="link" @click="openContactForm">{{$t('header.about')}}</a>
 
                 <div @click="setMobileMenu(true)" class="nav-toggle">
                     <span class="menu-trigger">
@@ -29,10 +29,10 @@
             <i class="close-trigger-bar right"></i>
         </span>
         <ul class="mobile-nav-links">
-            <router-link @click="setMobileMenu(false)" v-if="show_main" class="link" to="/">Главная</router-link>
-            <router-link @click="goToWorks" class="link" to="/#BlockWorks">Работы</router-link>
-            <a class="link" @click="openContactForm">Контакты</a>
-            <a class="link" @click="openContactForm">Обо мне</a>
+            <router-link @click="setMobileMenu(false)" v-if="show_main" class="link" to="/">{{$t('header.main')}}</router-link>
+            <router-link @click="goToWorks" class="link" to="/#BlockWorks">{{$t('header.works')}}</router-link>
+            <a class="link" @click="openContactForm">{{$t('header.contacts')}}</a>
+            <a class="link" @click="openContactForm">{{$t('header.about')}}</a>
         </ul>
         <Socials class="bottom-row"></Socials>
     </nav>

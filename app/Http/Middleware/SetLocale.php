@@ -38,15 +38,11 @@ class SetLocale
         } else {
             $country = Location::get($request->ip())->countryCode;
         }
-        dd($country);
-//        $country = $this->geoip->getLocation()->country;
-//
-//        // Добавьте здесь логику для определения локали на основе страны
-//        $locale = ($country == 'RU') ? 'ru' : 'en';
-//
-//        app()->setLocale($locale);
-//
-//        dd($request->ip());
+
+        $locale = (strtolower($country) == 'ru') ? 'ru' : 'en';
+
+        app()->setLocale($locale);
+
         return $next($request);
     }
 }

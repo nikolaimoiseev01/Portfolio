@@ -1,15 +1,15 @@
 <template>
     <div class="info-wrap width-restricted">
         <TextOverlay>
-            <h1>Моисеев Николай</h1>
+            <h1>{{$t('main_page.welcome.name')}}</h1>
         </TextOverlay>
 
         <TextOverlay>
-            <p>FullStack разработчик. Делаю сайты с любовью</p>
+            <p>{{$t('main_page.welcome.desc')}}</p>
         </TextOverlay>
 
         <TextOverlay id="welcome-cta">
-            <Button @click="openContactForm">Обо мне</Button>
+            <Button @click="openContactForm">{{$t('main_page.welcome.button')}}</Button>
         </TextOverlay>
 
     </div>
