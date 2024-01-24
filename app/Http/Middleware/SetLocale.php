@@ -39,6 +39,8 @@ class SetLocale
             $country = Location::get($request->ip())->countryCode;
         }
 
+        dd($country);
+        
         $locale = (strtolower($country) == 'ru') ? 'ru' : 'en';
 
         app()->setLocale($locale);
