@@ -40,6 +40,7 @@ class SetLocale
 //
 //        app()->setLocale($locale);
 //
+        dd($request->ip());
         dd(Location::get());
         return $next($request);
     }
