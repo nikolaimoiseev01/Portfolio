@@ -39,11 +39,15 @@ class WorkResource extends Resource
         return $form
             ->schema([
                 Card::make()->schema([
-                    Grid::make(3)
+                    Grid::make(4)
                         ->schema([
                             Forms\Components\TextInput::make('title')
                                 ->required()
                                 ->label('Название')
+                                ->maxLength(255),
+                            Forms\Components\TextInput::make('title_en')
+                                ->required()
+                                ->label('Название (ENG)')
                                 ->maxLength(255),
                             Forms\Components\TextInput::make('order')
                                 ->required()
@@ -98,6 +102,41 @@ class WorkResource extends Resource
                             RichEditor::make('text_detailed_2')
                                 ->required()
                                 ->label('Описание детальное 2')
+                                ->disableToolbarButtons([
+                                    'attachFiles',
+                                    'codeBlock',
+                                ]),
+                        ]),
+
+                    Grid::make()
+                        ->schema([
+                            RichEditor::make('desc_card_en')
+                                ->required()
+                                ->disableToolbarButtons([
+                                    'attachFiles',
+                                    'codeBlock',
+                                ])
+                                ->label('Описание в карточке (ENG)'),
+                            RichEditor::make('desc_full_en')
+                                ->required()
+                                ->disableToolbarButtons([
+                                    'attachFiles',
+                                    'codeBlock',
+                                ])
+                                ->label('Описание полное (ENG)'),
+                        ]),
+                    Grid::make()
+                        ->schema([
+                            RichEditor::make('text_detailed_1_en')
+                                ->required()
+                                ->label('Описание детальное 1 (ENG)')
+                                ->disableToolbarButtons([
+                                    'attachFiles',
+                                    'codeBlock',
+                                ]),
+                            RichEditor::make('text_detailed_2_en')
+                                ->required()
+                                ->label('Описание детальное 2 (ENG)')
                                 ->disableToolbarButtons([
                                     'attachFiles',
                                     'codeBlock',

@@ -19,6 +19,11 @@ class Work extends Model implements HasMedia
         'desc_full',
         'text_detailed_1',
         'text_detailed_2',
+        'title_en',
+        'desc_card_en',
+        'desc_full_en',
+        'text_detailed_1_en',
+        'text_detailed_2_en',
         'link',
         'stacks'
     ];

@@ -6,7 +6,7 @@
                  :width="width" :height="height" :alt="alttext"/>
             <div :style="{backgroundImage: 'url(' + image.full + ')'}" :class="{'active' : showLens}" ref="lens"
                  class="lens">
-                <p class="lens-title">ESC, чтобы закрыть</p>
+                <p class="lens-title">{{$t('work_page.esc_to_close')}}</p>
             </div>
         </div>
     </section>

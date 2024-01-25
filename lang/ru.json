@@ -25,5 +25,13 @@
     "contact_form.contact.button": "Отправить сообщение",
 
     "contact_form.contact.see_you": "Спасибо! Я скоро с вами свяжусь.",
-    "contact_form.contact.one_more_time": "Заполнить еще раз"
+    "contact_form.contact.one_more_time": "Заполнить еще раз",
+
+    "work_page.visit_site": "Посетить сайт",
+    "work_page.detailed": "Подробнее",
+    "work_page.with_love": "Сделано с любовью",
+    "work_page.tech_title": "Технологии",
+    "work_page.examples": "Примеры страниц",
+    "work_page.nex_work": "Следующая работа",
+    "work_page.esc_to_close": "ESC, чтобы закрыть"
 }

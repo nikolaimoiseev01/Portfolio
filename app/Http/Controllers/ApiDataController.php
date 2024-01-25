@@ -14,7 +14,36 @@ class ApiDataController extends Controller
 {
     public function AllWorks()
     {
-        $works = \App\Models\Work::all();
+        if(app()->getLocale() == 'ru') {
+            $works = \App\Models\Work::select([
+                'id',
+                'title',
+                'desc_card',
+                'desc_full',
+                'text_detailed_1',
+                'text_detailed_2',
+                'link',
+                'stacks',
+                'order',
+                'created_at',
+                'updated_at',
+            ])->get();
+        } else {
+            $works = \App\Models\Work::select([
+                'id',
+                'title_en as title',
+                'desc_card_en as desc_card',
+                'desc_full_en as desc_full',
+                'text_detailed_1_en as text_detailed_1',
+                'text_detailed_2_en as text_detailed_2',
+                'link',
+                'stacks',
+                'order',
+                'created_at',
+                'updated_at',
+            ])->get();
+        }
+
         // Добавим ссылки на медиа в каждый элемент работы
         $works->each(function ($work) {
             $work->work_examples = $work->getMedia('work_examples')->map(function ($media) {
@@ -41,48 +70,49 @@ class ApiDataController extends Controller
             }
 
             $work->stacks = $stacks;
+
         });
 
         return response()->json($works);
     }
 
-    public function Work($id)
-    {
-
-        $id = intval($id);
-        $work = \App\Models\Work::where('id', $id)->first();
-        // Добавим ссылки на медиа в каждый элемент работы
-        $work->work_examples = $work->getMedia('work_examples')->map(function ($media) {
-            return $media->getUrl();
-        });
-        $work->cover_full = $work->getFirstMediaUrl('work_cover_full');
-        $work->cover_card = $work->getFirstMediaUrl('work_cover_card');
-        $work->cover_desc_detailed_1_small = $work->getFirstMediaUrl('cover_desc_detailed_1_small');
-        $work->cover_desc_detailed_1_full = $work->getFirstMediaUrl('cover_desc_detailed_1_full');
-        $work->cover_desc_detailed_2_small = $work->getFirstMediaUrl('cover_desc_detailed_2_small');
-        $work->cover_desc_detailed_2_full = $work->getFirstMediaUrl('cover_desc_detailed_2_full');
-
-        $stacks = [];
-        if ($work['stacks']) {
-            foreach ($work['stacks'] as $stack) {
-                $fstack = Stack::where('name', $stack)->first();
-                $stacks[] = [
-                    'name' => $fstack['name'],
-                    'color' => $fstack['color']
-                ];
-            }
-        }
-
-
-//        dd($stacks);
-        $work->stacks = $stacks;
-
-//        $work->stacks = json_decode($work->stacks);
+//    public function Work($id)
+//    {
 //
-//        dd($work);
+//        $id = intval($id);
+//        $work = \App\Models\Work::where('id', $id)->first();
+//        // Добавим ссылки на медиа в каждый элемент работы
+//        $work->work_examples = $work->getMedia('work_examples')->map(function ($media) {
+//            return $media->getUrl();
+//        });
+//        $work->cover_full = $work->getFirstMediaUrl('work_cover_full');
+//        $work->cover_card = $work->getFirstMediaUrl('work_cover_card');
+//        $work->cover_desc_detailed_1_small = $work->getFirstMediaUrl('cover_desc_detailed_1_small');
+//        $work->cover_desc_detailed_1_full = $work->getFirstMediaUrl('cover_desc_detailed_1_full');
+//        $work->cover_desc_detailed_2_small = $work->getFirstMediaUrl('cover_desc_detailed_2_small');
+//        $work->cover_desc_detailed_2_full = $work->getFirstMediaUrl('cover_desc_detailed_2_full');
+//
+//        $stacks = [];
+//        if ($work['stacks']) {
+//            foreach ($work['stacks'] as $stack) {
+//                $fstack = Stack::where('name', $stack)->first();
+//                $stacks[] = [
+//                    'name' => $fstack['name'],
+//                    'color' => $fstack['color']
+//                ];
+//            }
+//        }
+//
+//
+////        dd($stacks);
+//        $work->stacks = $stacks;
+//
+////        $work->stacks = json_decode($work->stacks);
 ////
-        return response()->json($work->toArray());
-    }
+////        dd($work);
+//////
+//        return response()->json($work->toArray());
+//    }
 
     public function via($notifiable)
     {

@@ -5,7 +5,7 @@
                 <LogoWhite></LogoWhite>
             </router-link>
             <div class="menu-wrap">
-                <router-link v-if="show_main" class="link" to="/">Главная</router-link>
+                <router-link v-if="show_main" class="link" to="/">{{$t('header.main')}}</router-link>
                 <router-link @click="goToWorks" class="link" to="/#BlockWorks">
                     {{$t('header.works')}}
 <!--                    Работы-->
