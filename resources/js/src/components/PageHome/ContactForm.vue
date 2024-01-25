@@ -23,7 +23,7 @@
             </div>
             <div class="about-wrap">
                 <div class="giga-text">{{ $t('contact_form.about.title') }}</div>
-                <h2>Обо мне</h2>
+                <h2>{{ $t('contact_form.about.title') }}</h2>
                 <p v-html="$t('contact_form.about.text')"></p>
                 <ul class="about-me-list">
                     <li class="vue">
