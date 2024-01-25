@@ -24,7 +24,7 @@
                     <p v-html="work.desc_full"></p>
                 </BlockAppearance>
                 <BlockAppearance style="text-align: center; margin-top: 50px;">
-                    <Link target="_blank" :href="work.link" class="simple">{{$t('work_page.visit_site')}}</Link>
+                    <Link target="_blank" :href="work.link" class="simple">{{ $t('work_page.visit_site') }}</Link>
                 </BlockAppearance>
             </div>
 
@@ -32,14 +32,14 @@
 
         <section class="width-restricted detailed-info-wrap">
             <BlockAppearance>
-                <h2 class="section-title">{{$t('work_page.detailed')}}</h2>
+                <h2 class="section-title">{{ $t('work_page.detailed') }}</h2>
             </BlockAppearance>
 
             <div class="info-wrap">
                 <BlockAppearance>
                     <div class="block-general">
                         <div class="text">
-                            <h3>{{$t('work_page.with_love')}}</h3>
+                            <h3>{{ $t('work_page.with_love') }}</h3>
                             <div class="divider"></div>
                             <p v-html="work.text_detailed_1"></p>
                         </div>
@@ -64,7 +64,7 @@
 
                 <BlockAppearance>
                     <div class="block-stacks">
-                        <h3>{{$t('work_page.tech_title')}}</h3>
+                        <h3>{{ $t('work_page.tech_title') }}</h3>
                         <div class="divider"></div>
                         <div class="stacks-wrap">
                     <span class="stack" v-for="stack in work.stacks" :style="{'background-color':stack.color}">
@@ -75,7 +75,7 @@
                 </BlockAppearance>
 
                 <div class="block-examples">
-                    <h3>{{$t('work_page.examples')}}</h3>
+                    <h3>{{ $t('work_page.examples') }}</h3>
                     <div class="divider"></div>
 
                     <zoom-lens-image
@@ -98,7 +98,7 @@
         <BlockAppearance>
             <router-link :to="'/work/' + next_work.id" class="next-work">
                 <div class="content width-restricted">
-                    <h5 class="next-work-lead">{{$t('work_page.nex_work')}}</h5>
+                    <h5 class="next-work-lead">{{ $t('work_page.nex_work') }}</h5>
                     <h4 class="next-work-title">{{ next_work.title }}</h4>
                     <div class="next-work-arrow">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 476.213 476.213">
@@ -244,22 +244,16 @@ ul {
         padding: 0;
     }
 }
+
+.intro-block-wrap {
+    p {
+        color: white !important;
+    }
+}
 </style>
 
 <style lang="scss" scoped>
 @import "/resources/scss/app";
-
-//img {
-//    transition: -webkit-transform .3s;
-//    transition: transform .3s;
-//    transition: transform .3s, -webkit-transform .3s;
-//
-//    &:hover {
-//        -webkit-transform: scale(1.01);
-//        transform: scale(1.01);
-//    }
-//
-//}
 
 .welcome-wrap {
     position: relative;
@@ -340,7 +334,7 @@ ul {
     background: $color-main-dark;
 
     p {
-        color: white;
+        color: white !important;
         width: 90%;
         max-width: 1000px;
 
