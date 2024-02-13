@@ -20,7 +20,7 @@ class SetLocale
         }
 
 
-        $locale = (strtolower($country) == 'ru') ? 'ru' : 'en';
+        $locale = (strtolower($country) == 'ru') ? 'ru' : 'ru';
 
         app()->setLocale($locale);
 
