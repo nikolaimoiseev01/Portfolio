@@ -17,9 +17,14 @@ return new class extends Migration
             $table->string('title');
             $table->string('desc_card');
             $table->text('desc_full');
-            $table->string('link');
             $table->text('text_detailed_1');
             $table->text('text_detailed_2');
+            $table->string('title_en');
+            $table->string('desc_card_en');
+            $table->text('desc_full_en');
+            $table->text('text_detailed_1_en');
+            $table->text('text_detailed_2_en');
+            $table->string('link');
             $table->json('stacks');
             $table->timestamps();
         });
