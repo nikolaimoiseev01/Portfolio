@@ -13,19 +13,19 @@ return new class extends Migration
     {
         Schema::create('works', function (Blueprint $table) {
             $table->id();
-            $table->string('order');
-            $table->string('title');
-            $table->string('desc_card');
-            $table->text('desc_full');
-            $table->text('text_detailed_1');
-            $table->text('text_detailed_2');
-            $table->string('title_en');
-            $table->string('desc_card_en');
-            $table->text('desc_full_en');
-            $table->text('text_detailed_1_en');
-            $table->text('text_detailed_2_en');
-            $table->string('link');
-            $table->json('stacks');
+            $table->string('order')->nullable();
+            $table->string('title')->nullable();
+            $table->string('desc_card')->nullable();
+            $table->text('desc_full')->nullable();
+            $table->text('text_detailed_1')->nullable();
+            $table->text('text_detailed_2')->nullable();
+            $table->string('title_en')->nullable();
+            $table->string('desc_card_en')->nullable();
+            $table->text('desc_full_en')->nullable();
+            $table->text('text_detailed_1_en')->nullable();
+            $table->text('text_detailed_2_en')->nullable();
+            $table->string('link')->nullable();
+            $table->json('stacks')->nullable();
             $table->timestamps();
 
         });
