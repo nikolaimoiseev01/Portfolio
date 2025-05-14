@@ -179,6 +179,7 @@ export default {
             store.commit('setPageTransitionVisible', true)
             axios.get('/api/all-works')
                 .then(async response => {
+
                     this.all_works = response.data;
                     this.work = this.all_works[this.$route.params.id - 1];
                     if (this.work) {

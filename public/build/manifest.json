@@ -10,24 +10,24 @@
     "src": "lang/php_en.json"
   },
   "lang/ru.json": {
-    "file": "assets/ru-a4197670.js",
+    "file": "assets/ru-6cec2722.js",
     "isDynamicEntry": true,
     "src": "lang/ru.json"
   },
   "resources/js/app.css": {
-    "file": "assets/app-37183278.css",
+    "file": "assets/app-220f5167.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.js": {
     "css": [
-      "assets/app-37183278.css"
+      "assets/app-220f5167.css"
     ],
     "dynamicImports": [
       "lang/en.json",
       "lang/php_en.json",
       "lang/ru.json"
     ],
-    "file": "assets/app-65db2cb1.js",
+    "file": "assets/app-a247e2f3.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },

@@ -28,24 +28,41 @@ export default {
         Footer,
         ContactForm
     },
+    data() {
+        return {
+            hasJustScrolled: false,
+        };
+    },
     watch: {
-        '$route'(to, from) {
+        '$route'(to) {
+            // Прерываем, если уже недавно скроллили
+            if (this.hasJustScrolled) return;
 
-            if (!to.fullPath.includes('#BlockWorks') && to.fullPath !== '/') {
-                this.scrollToTop();
-                store.commit('setPageTransitionVisible', true);
-            }
+            // Пропускаем якорные переходы и главную страницу
+            if (to.fullPath.includes('#BlockWorks') || to.fullPath === '/') return;
+
+            // Устанавливаем флаг и выполняем скролл с задержкой
+            this.hasJustScrolled = true;
+            setTimeout(() => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                // Сбрасываем флаг после небольшой паузы
+                setTimeout(() => {
+                    this.hasJustScrolled = false;
+                }, 1000); // 1 сек достаточно для любого smooth scroll
+            }, 100); // Задержка, чтобы подождать отрисовку нового контента
         }
     },
     methods: {
-        // Метод для плавной прокрутки до верха страницы
         scrollToTop() {
-            // Ваш код для плавной прокрутки, например, с использованием requestAnimationFrame
+            this.isScrolling = true;
             const scrollToTop = () => {
                 const c = document.documentElement.scrollTop || document.body.scrollTop;
                 if (c > 0) {
                     window.requestAnimationFrame(scrollToTop);
                     window.scrollTo(0, c - c / 8);
+                } else {
+                    this.isScrolling = false; // сброс флага по завершению
                 }
             };
             scrollToTop();
