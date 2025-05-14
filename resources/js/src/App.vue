@@ -37,7 +37,7 @@ export default {
         '$route'(to) {
             // Прерываем, если уже недавно скроллили
             if (this.hasJustScrolled) return;
-
+console.log('NEW')
             // Пропускаем якорные переходы и главную страницу
             if (to.fullPath.includes('#BlockWorks') || to.fullPath === '/') return;
 
