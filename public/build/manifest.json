@@ -15,19 +15,19 @@
     "src": "lang/ru.json"
   },
   "resources/js/app.css": {
-    "file": "assets/app-f68c97ca.css",
+    "file": "assets/app-d708dbec.css",
     "src": "resources/js/app.css"
   },
   "resources/js/app.js": {
     "css": [
-      "assets/app-f68c97ca.css"
+      "assets/app-d708dbec.css"
     ],
     "dynamicImports": [
       "lang/en.json",
       "lang/php_en.json",
       "lang/ru.json"
     ],
-    "file": "assets/app-aba707bb.js",
+    "file": "assets/app-79c1d55b.js",
     "isEntry": true,
     "src": "resources/js/app.js"
   },

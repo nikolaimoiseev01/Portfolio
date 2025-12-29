@@ -2,9 +2,25 @@ import {createRouter, createWebHistory} from "vue-router";
 import routes from "@/src/router/routes.js";
 
 const router = createRouter({
-    // 4. Provide the history implementation to use. We are using the hash history for simplicity here.
     history: createWebHistory(),
-    routes, // short for `routes: routes`
+    routes,
+    scrollBehavior(to, from, savedPosition) {
+        // back / forward
+        if (savedPosition) {
+            return savedPosition
+        }
+
+        // якоря
+        if (to.hash) {
+            return {
+                el: to.hash,
+                behavior: 'smooth'
+            }
+        }
+
+        // обычный переход
+        return { top: 0 }
+    }
 })
 
 router.beforeEach((to, from, next) => {
